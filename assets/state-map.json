@@ -1,0 +1,22 @@
+{
+  "idle": {
+    "label": "待机：比耶站姿",
+    "file": "states/idle.png",
+    "trimmedFile": "states-trimmed/idle.png"
+  },
+  "wave": {
+    "label": "挥手：开心打招呼",
+    "file": "states/wave.png",
+    "trimmedFile": "states-trimmed/wave.png"
+  },
+  "wait": {
+    "label": "等待：拿相机思考",
+    "file": "states/wait.png",
+    "trimmedFile": "states-trimmed/wait.png"
+  },
+  "work": {
+    "label": "工作：坐下使用电脑",
+    "file": "states/work.png",
+    "trimmedFile": "states-trimmed/work.png"
+  }
+}
