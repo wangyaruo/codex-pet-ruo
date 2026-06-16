@@ -13,12 +13,39 @@
 
 ## 快速安装到 Codex
 
-在任意设备上执行：
+### 环境要求
+
+- 已安装 Codex
+- 已安装 Git
+- 能访问 GitHub
+
+### macOS / Linux
 
 ```bash
 git clone https://github.com/wangyaruo/codex-pet-ruo.git
 cd codex-pet-ruo
 bash scripts/install-codex-pet.sh
+```
+
+### Windows PowerShell
+
+```powershell
+git clone https://github.com/wangyaruo/codex-pet-ruo.git
+cd codex-pet-ruo
+powershell -ExecutionPolicy Bypass -File .\scripts\install-codex-pet.ps1
+```
+
+如果已经在 PowerShell 中，也可以执行：
+
+```powershell
+.\scripts\install-codex-pet.ps1
+```
+
+如果遇到执行策略限制，先在当前 PowerShell 会话中执行：
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\scripts\install-codex-pet.ps1
 ```
 
 然后重启 Codex。自定义宠物名称是：
@@ -27,12 +54,40 @@ bash scripts/install-codex-pet.sh
 Ruo Chibi Pet
 ```
 
-脚本会安装到：
+macOS / Linux 默认安装到：
 
 ```text
 ${CODEX_HOME:-$HOME/.codex}/pets/codex-pet-ruo/
 ├── pet.json
 └── spritesheet.webp
+```
+
+Windows 默认安装到：
+
+```text
+%USERPROFILE%\.codex\pets\codex-pet-ruo\
+├── pet.json
+└── spritesheet.webp
+```
+
+如果设置了 `CODEX_HOME` 环境变量，安装脚本会优先使用 `CODEX_HOME`。
+
+### 手动安装
+
+macOS / Linux：
+
+```bash
+mkdir -p ~/.codex/pets/codex-pet-ruo
+cp pet-package/codex-pet-ruo/pet.json ~/.codex/pets/codex-pet-ruo/pet.json
+cp pet-package/codex-pet-ruo/spritesheet.webp ~/.codex/pets/codex-pet-ruo/spritesheet.webp
+```
+
+Windows PowerShell：
+
+```powershell
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\pets\codex-pet-ruo"
+Copy-Item ".\pet-package\codex-pet-ruo\pet.json" "$env:USERPROFILE\.codex\pets\codex-pet-ruo\pet.json" -Force
+Copy-Item ".\pet-package\codex-pet-ruo\spritesheet.webp" "$env:USERPROFILE\.codex\pets\codex-pet-ruo\spritesheet.webp" -Force
 ```
 
 ## 素材预览
@@ -77,6 +132,7 @@ dist/codex-pet-ruo/contact-sheet.jpg
 │       ├── pet.json
 │       └── spritesheet.webp
 ├── scripts
+│   ├── install-codex-pet.ps1
 │   └── install-codex-pet.sh
 └── tools
     ├── split_assets.py
@@ -148,6 +204,12 @@ cp dist/codex-pet-ruo/spritesheet.webp pet-package/codex-pet-ruo/spritesheet.web
 bash scripts/install-codex-pet.sh
 ```
 
+Windows PowerShell：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-codex-pet.ps1
+```
+
 ## 生成说明
 
 图片生成使用了用户提供的照片作为视觉参考，保留了这些特征：
@@ -160,4 +222,3 @@ bash scripts/install-codex-pet.sh
 - 比耶、挥手、拿相机、坐下工作等动作
 
 为了保护隐私，原始照片不在仓库内。
-
